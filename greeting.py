@@ -1,7 +1,7 @@
 import streamlit as st
 import subprocess
 
-# --- Functions ---
+
 def ask_llama(prompt):
     result = subprocess.run(
         ['ollama', 'run', 'llama2'],
@@ -16,7 +16,7 @@ def get_greeting(name, occasion, tone, language):
         f"for the occasion of {occasion}. Please write the message in {language} only."
     )
     return ask_llama(prompt)
-# --- UI Layout ---
+
 st.set_page_config(page_title="Greeting Generator", page_icon="🎉")
 st.title("🎉 Custom Greeting Generator (LLaMA 2 + Ollama)")
 
@@ -28,13 +28,12 @@ tone = st.selectbox(
     ["Friendly", "Formal", "Funny", "Emotional", "Motivational"]
 )
 
-# 🌐 Language selector (Add this)
+
 language = st.selectbox(
     "Choose Language",
     ["English", "Tamil", "Hindi", "French", "Spanish"]
 )
 
-# --- Button ---
 if st.button("Generate Greeting"):
     if name and occasion:
         with st.spinner("⏳ Generating your greeting..."):
